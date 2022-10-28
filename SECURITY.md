@@ -6,7 +6,7 @@ Framework:
 
 | Version | Supported          |
 | ------- | ------------------ |
-|    x    | :x:                |
+| v1.1.1  | :white_check_mark: |
 
 
 Commands/Extensions:
