@@ -2,6 +2,7 @@
 My own Discord Bot with extendable features
 
 All Extensions and Commands can be Enabled/Disabled on will
+This repository will is the current repository all features will be moved from my repository to this TheJoSam-Development repository
 
 ## Expanding this Bot
 
