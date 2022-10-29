@@ -1,0 +1,37 @@
+{
+    "title": "",
+    "description": "",
+    "url": "",
+    "color": "",
+    "author": {
+        "name": "",
+        "url": "",
+        "icon_url": "",
+        "proxy_icon_url": ""
+    },
+    "fields": {
+        "field_1": {
+            "name": "",
+            "value": "",
+            "inline": true
+        }
+    },
+    "image": {
+        "url": "",
+        "proxy_url": "",
+        "height": 0,
+        "width": 0
+    },
+    "thumbnail": {
+        "url": "",
+        "proxy_url": "",
+        "height": 0,
+        "width": 0
+    },
+    "footer": {
+        "text": "",
+        "icon_url": "",
+        "proxy_icon_url": ""
+    },
+    "timestamp": ""
+}
