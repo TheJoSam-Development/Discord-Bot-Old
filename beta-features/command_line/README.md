@@ -6,7 +6,7 @@ for the reasons that some features will only be usable for users with permission
 
 ## Planned features
 
-- [] Integration into Bot framework
-- [] inject command
-- [] template/backup feature
-- [] Two command integration variants (Multiparse or Direct)
+- [ ] Integration into Bot framework
+- [ ] inject command
+- [ ] template/backup feature
+- [ ] Two command integration variants (Multiparse or Direct)
