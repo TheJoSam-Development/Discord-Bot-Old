@@ -1,5 +1,6 @@
-config/main.json
+
 logs/latest.log
 user_register.csv
 data/tuuid_list.dat
 *.pyc
+config/main.json
