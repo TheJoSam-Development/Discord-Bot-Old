@@ -1,6 +1,6 @@
 from discord.ext import commands
 
-def convert_for_framework(command_file: str):
+def convert_for_framework(command_file: str, *bot_user):
     cf = open(command_file, 'r')
     global row_number
     global command_number
@@ -16,16 +16,17 @@ def convert_for_framework(command_file: str):
             print('Init row found')
             command_number += 1
             T0 = 1
-        elif row.startswith('T0') and T0 == 0:
+        elif row.startswith('T0') and T0 == 1:
             print('T0 can only be 1 time inside command_file')
+        elif row.startswith('T0') and command_number != 0:
+            print('T0 must be the first command called')
         
         if row.startswith('T1'):
             print(str(row[3:]).rstrip())
             command_number += 1
         
         if row.startswith('T2'):
-            args = row[3:].split(' ', maxsplit=1)
-            print(f'Sending message "{str(args[1]).rstrip()}" into channel "{args[0]}"')
+            print('T2 called')
             command_number += 1
 
 if __name__ == '__main__':
