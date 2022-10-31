@@ -1,0 +1,3 @@
+T0: Initialize Commands file (if not presend error)
+T1 [message]: prints an text into console
+T2 [channel id] [message]: sends an message in specified channel
