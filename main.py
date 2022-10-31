@@ -6,6 +6,8 @@ import time
 import json
 from modules import logger as log_module
 from alive_progress import alive_bar
+import asyncio
+import threading
 
 config_file_path = './config/main.json'
 config_file = open(config_file_path, 'r')
@@ -57,7 +59,7 @@ if extensions['extensions'] != []:
             logger.debug(message='Finished loading extension: {}'.format(command), extra='[Extension Handler]')
             bar()
 else:
-    logger.warning(message='registered command not found: errorcode 21', extra='[Extension Handler]')
+    logger.warning(message='registered extension not found: errorcode 21', extra='[Extension Handler]')
 
 
 @bot.command()
@@ -80,4 +82,4 @@ async def on_ready():
     logger.info('Bot connected successfully')
     logger.info('Bot ready')
 
-bot.run(str(config['api_key']))
+threading.Thread(target=bot.run(str(config['api_key']))).start()
