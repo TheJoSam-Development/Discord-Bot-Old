@@ -1,8 +1,0 @@
-{
-    "std_log_file": "logs/audit.log",
-    "time_format":  "%H-%M-%S_%d-%m-%Y",
-    "log_time_format": "%H:%M:%S|%d/%m/%Y",
-
-    "output": true,
-    "overwrite": true
-}

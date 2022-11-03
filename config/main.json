@@ -1,5 +1,0 @@
-{
-    "prefix":          "!",
-    "api_key":         "your api key/token",
-    "extensions_file": "./config/extensions.json"
-}
