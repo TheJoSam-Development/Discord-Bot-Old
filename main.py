@@ -52,7 +52,7 @@ if extensions['extensions'] != []:
             logger.debug(message='Starting loading command: {}'.format(command), extra='[Extension Handler]')
             try:
                 bot.load_extension(command)
-                loaded_commands.append(command)
+                loaded_extensions.append(command)
                 time.sleep(0.05)
             except Exception as e:
                 logger.error(message='load extension raised an error with errorcode 20: {}'.format(e), extra='[Extension Handler]')
@@ -64,11 +64,17 @@ else:
 
 @bot.command()
 async def list_commands(ctx):
-    await ctx.send('Loaded Commands: {}'.format(loaded_commands))
+    if loaded_commands != []:
+        await ctx.send('Loaded Commands: {}'.format(loaded_commands))
+    else:
+        await ctx.send('No Loaded Commands')
 
 @bot.command()
 async def list_extensions(ctx):
-    await ctx.send('Loaded Extensions: {}'.format(loaded_extensions))
+    if loaded_extensions != []:
+        await ctx.send('Loaded Extensions: {}'.format(loaded_extensions))
+    else:
+        await ctx.send('No Loaded Extensions')
 
 @bot.command()
 @has_permissions(administrator=True)
@@ -82,4 +88,4 @@ async def on_ready():
     logger.info('Bot connected successfully')
     logger.info('Bot ready')
 
-threading.Thread(target=bot.run(str(config['api_key']))).start()
+bot.run(str(config['api_key']))
