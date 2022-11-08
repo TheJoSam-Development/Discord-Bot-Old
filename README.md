@@ -26,10 +26,6 @@ For Developers:
 
 ## Future Plans
 
-- [x] Finish basic Framework
-- [ ] better User Interface
-- [ ] add new Features
-- [ ] command line addition
-- [ ] User Interface with own User accounts for Staff Members
+You will find my current plans for new features/changes in the [Features File](FEATURES.md)
 
 <sub> If you have Question feel free to ask me on my E-Mail: TheJoSam.Development@gmail.com</sub>
