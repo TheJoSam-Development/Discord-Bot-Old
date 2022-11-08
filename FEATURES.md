@@ -1,14 +1,18 @@
 # Bot Features
-Here are all planned features for the Bot framework
+Here are all planned features for the Bot framework and also all Framwork changes (modules)  
+you see also what I'm currently working on by *italic content*
 
----
+## Framework changes
 
-- [ ] Change Logger Module to python integrated logging module with advanced logging and error codes
+- [ ] *Change Logger Module to python integrated logging module with advanced logging and error codes*
+- [ ] Enigma like encryption system
 
-- [ ] Join/Leave Message
-- [ ] Injection
-- [ ] User Register
-- [ ] Privat TUUID / Public TUUID system
+## Discord changes
+
+- [ ] *Join/Leave Message*
+- [ ] *Injection*
+- [ ] *User Register*
+- [ ] *Privat TUUID / Public TUUID system*
 - [ ] Youtube
   - [ ] Better Video Preview
   - [ ] Channel Preview
@@ -35,7 +39,7 @@ Here are all planned features for the Bot framework
 - [ ] QR code creator
 - [ ] info command
   - [ ] User info
-  - [ ] Bot info
+  - [ ] *Bot info*
   - [ ] Server info
   - [ ] Role info
 - [ ] Rule system
