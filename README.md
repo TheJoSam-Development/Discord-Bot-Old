@@ -1,8 +1,5 @@
-# Discord-Bot (*beta features*)
+# Discord-Bot
 My own Discord Bot with extendable features
-This branch includes the newest features which will be added to main soon  
-
-**!!! DO NOT USE FOR YOUR SERVER THESE ARE NOT FINISHED FEATURES AND MAYBE NOT HAVE THE NEEDED SECURITY FEATURES !!!**
 
 All Extensions and Commands can be Enabled/Disabled on will  
 This repository will is the current repository all features will be moved from my repository to this TheJoSam-Development repository
