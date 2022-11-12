@@ -20,3 +20,5 @@ class command_line(commands.Cog):
 
 def setup(bot):
     bot.add_cog(command_line(bot))
+    while True:
+        pass
