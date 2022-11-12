@@ -1,4 +1,14 @@
 import secrets
+import logging
+import logging.config
+import json
+
+logger_config_file = open('config/logger.json')
+logger_config_file = json.load(logger_config_file)
+logger_config = logging.config.dictConfig(logger_config_file)
+logger = logging.getLogger(__name__)
+
+logger.debug('[imports]: Loading of TUUID Creator finished')
 
 global characters_file
 global reserved_list
@@ -66,6 +76,7 @@ def generate_type_1(count: int):
             used.write(base + '\n')
             used.close()
             used_read.close()
+            logger.info('[generate_type_1]: Generated TUUID with type 1: |{}|'.format(base))
             return base
         else:
             i = 0
@@ -134,6 +145,7 @@ def generate_type_4(count: int):
             used.write(base + '\n')
             used.close()
             used_read.close()
+            logger.info('[generate_type_1]: Generated TUUID with type 4: |{}|'.format(base))
             return base
         else:
             i = 0
@@ -200,6 +212,7 @@ def generate_type_6(count: int):
             used.write(base + '\n')
             used.close()
             used_read.close()
+            logger.info('[generate_type_1]: Generated TUUID with type 6: |{}|'.format(base))
             return base
         else:
             i = 0
@@ -273,6 +286,7 @@ def generate_type_5(count: int):
             used.write(base + '\n')
             used.close()
             used_read.close()
+            logger.info('[generate_type_1]: Generated TUUID with type 5: |{}|'.format(base))
             return base
         else:
             i = 0
@@ -346,6 +360,7 @@ def generate_custom(count: int,
             used.write(base + '\n')
             used.close()
             used_read.close()
+            logger.info('[generate_type_1]: Generated TUUID with custom type: |{}|'.format(base))
             return base
         else:
             i = 0
