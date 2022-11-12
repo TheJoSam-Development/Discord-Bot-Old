@@ -4,7 +4,7 @@ you see also what I'm currently working on by *italic content*
 
 ## Framework changes
 
-- [ ] *Change Logger Module to python integrated logging module with advanced logging and error codes*
+- [x] Change Logger Module to python integrated logging module with advanced logging and error codes
 - [ ] Enigma like encryption system
 
 ## Discord changes
