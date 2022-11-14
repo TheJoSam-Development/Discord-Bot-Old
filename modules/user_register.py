@@ -78,41 +78,17 @@ class user_file:
         self.tuuid = tuuid
         logger.debug('[user_file][init]: Initialized user_file object')
     
-    def create_file(self):
-        for file in os.listdir('data/users'):
-            if not file.endswith('.user') and not file.endswith('.md'):
-                logger.warning('[user_file][create_file]: found file that is not an user file')
-            
-            elif file.startswith(self.tuuid):
-                logger.error('[user_file][create_file]: User file was already created')
-            
-            else:
-                try:
-                    with open(('data/users/' + self.tuuid + '.user'), 'w') as uf:
-                        uf.write('This was created by the User Register version ' + __version__)
-                    logger.info('[user_file][create_file]: User file sucessfully created')
-                
-                except: logger.error('[user_file][create_file]: User file errored on creation')
+    def write_data(self, new_data, category):
+        with open('{}.json'.format(self.tuuid), 'r+') as file:
+            file_data = json.load(file)
+            file_data[f'{category}'].append(new_data)
+            file.seek(0)
+            json.dump(file_data, file, indent=4)
     
-    def input_data(self, title: str, **kwargs):
-        try:
-            uf = open(('data/users/' + self.tuuid + '.user'), 'a+')
-            uf.write(f'{title}|{str(kwargs)}')
-        
-        except: logger.error(f'[user_file][input_data]: raised an error: {Exception}')
+    def read_data(self):
+        with open('{}.json'.format(self.tuuid), 'r+') as file:
+            return json.load(file)
     
-    def append_data(self, title: str, **kwargs):
-        try:
-            line_count = 0
-            uf = open(('data/users/' + self.tuuid + '.user'), 'w+')
-            lines = uf.readlines()
-            for line in lines:
-                if not line.startswith(title + '|'):
-                    continue
-                
-                lines[line_count] = f'{title}|{kwargs}'
-                uf.writelines(lines)
-                
-                line_count =+ 1
-        
-        except: logger.error(f'[user_file][input_data]: raised an error: {Exception}')
+    def empty_file(self):
+        with open('{}.json'.format(self.tuuid), 'w+') as file:
+            file.write('')

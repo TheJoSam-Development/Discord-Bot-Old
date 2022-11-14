@@ -7,8 +7,7 @@ import json
 import logging
 import logging.config
 from alive_progress import alive_bar
-import asyncio
-import threading
+import sys
 
 config_file_path = './config/main.json'
 config_file = open(config_file_path, 'r')

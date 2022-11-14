@@ -13,12 +13,11 @@ class command_line(commands.Cog):
         await ctx.send('You have now {} in your console'.format(call_message))
         
         for i in range(calls):
-            cmd = input('[] > '.format(calls))
+            cmd = input('[{}] > '.format(calls))
             if cmd.startswith('inject'):
                 print('Starting Server Bot Injection sequence')
                 inject.call()
+            else: break
 
 def setup(bot):
     bot.add_cog(command_line(bot))
-    while True:
-        pass
