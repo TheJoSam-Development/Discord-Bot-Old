@@ -73,6 +73,23 @@ def get_user(user_id: str):
     except Exception: logger.error(f'[get_user]: raised an exception errorcode 57: {Exception}')
 
 
+def check_if_exists(user_id: str):
+    try: 
+        with open(register_file, 'r') as user_register:
+            user_register_reader = user_register.readlines()
+            line_count = 0
+            for item in user_register_reader:
+                data = item.split(',')
+                print(data)
+                if line_count == 0:
+                    line_count += 1
+                    continue
+                elif user_id in data[1]: return True
+                else: return False
+                
+    except Exception: logger.error(f'[get_user]: raised an exception errorcode 57: {Exception}')
+
+
 class user_file:
     def __init__(self, tuuid: str):
         self.tuuid = tuuid

@@ -82,6 +82,15 @@ async def list_extensions(ctx):
         await ctx.send('No Loaded Extensions')
 
 @bot.command()
+async def load_extension(ctx, extension: str):
+    bot.load_extension(extension)
+
+@bot.command()
+async def reload_extension(ctx, extension: str):
+    bot.reload_extension(extension)
+
+
+@bot.command()
 @has_permissions(administrator=True)
 async def logout(ctx):
     await ctx.send('logging out')
