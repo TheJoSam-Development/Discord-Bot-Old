@@ -9,6 +9,8 @@ import logging.config
 from alive_progress import alive_bar
 import sys
 
+from modules import extension_loader
+
 config_file_path = './config/main.json'
 config_file = open(config_file_path, 'r')
 log_config_file = open('config/logger.json', 'r')
@@ -56,7 +58,13 @@ if extensions['extensions'] != []:
             logger.debug('[Extension Handler]: Starting loading extension: {}'.format(extension))
             bar.text('Loading {}'.format(extension))
             try:
-                bot.load_extension(extension)
+                if extension.startswith('extension.'):
+                    bot.load_extension(extension)
+                    loaded_extensions.append(extension)
+                    time.sleep(0.05)
+                    continue
+                extension_data = extension_loader.get_extension_meta(extension)
+                bot.load_extension(extension_data[5])
                 loaded_extensions.append(extension)
                 time.sleep(0.05)
             except Exception as e:
@@ -83,11 +91,31 @@ async def list_extensions(ctx):
 
 @bot.command()
 async def load_extension(ctx, extension: str):
-    bot.load_extension(extension)
+    if extension.startswith('extension.') or extension.startswith('commands.'):
+        bot.load_extension(extension)
+        loaded_extensions.append(extension)
+        time.sleep(0.05)
+    extension_data = extension_loader.get_extension_meta(extension)
+    bot.load_extension(extension_data[5])
+    loaded_extensions.append(extension)
 
 @bot.command()
 async def reload_extension(ctx, extension: str):
-    bot.reload_extension(extension)
+    if extension.startswith('extension.') or extension.startswith('commands.'):
+        bot.reload_extension(extension)
+        time.sleep(0.05)
+    extension_data = extension_loader.get_extension_meta(extension)
+    bot.reload_extension(extension_data[5])
+
+@bot.command()
+async def unload_extension(ctx, extension: str):
+    if extension.startswith('extension.') or extension.startswith('commands.'):
+        bot.unload_extension(extension)
+        loaded_extensions.append(extension)
+        time.sleep(0.05)
+    extension_data = extension_loader.get_extension_meta(extension)
+    bot.unload_extension(extension_data[5])
+    loaded_extensions.remove(extension)
 
 
 @bot.command()

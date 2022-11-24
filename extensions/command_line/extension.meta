@@ -1,0 +1,6 @@
+Name: Command Line
+Version: v1.2
+Author: TheJoSam
+Description: Command line for the Discord Bot (OEM Extension)
+
+MAIN_file: main.py
