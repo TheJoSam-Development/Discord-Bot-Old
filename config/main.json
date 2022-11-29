@@ -1,5 +1,8 @@
 {
     "prefix":          "!",
-    "api_key":         "ODAwNzE0NTA0NzM5ODgwOTYw.GTooOT.w5NPhosJMhbtqG_mosDT2YyMw-fpYLOs5I_2S8",
-    "extensions_file": "./config/extensions.json"
+    "api_key":         "yourtoken",
+    "extensions_file": "./config/extensions.json",
+    "dirs": {
+        "commands_dir": "commands"
+    }
 }

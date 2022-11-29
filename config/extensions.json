@@ -1,6 +1,6 @@
 {
     "commands":   [
-
+        "commands.ping"
     ],
 
     "extensions": [

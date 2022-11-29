@@ -7,7 +7,7 @@ import json
 import logging
 import logging.config
 from alive_progress import alive_bar
-import sys
+import os
 
 from modules import extension_loader
 
@@ -34,23 +34,34 @@ intents = discord.Intents.all()
 bot = commands.Bot(command_prefix = str(config['prefix']), intents = intents)
 #bot.remove_command('help') #Uncomment when using an external Help command (official is WIP)
 
+commands = list()
+command_files = os.listdir(str(config['dirs']['commands_dir']))
+for command_file in command_files:
+    if command_file.endswith('.py'):
+        if command_file.__contains__('/'):
+            commands.append(command_file[:-3].replace('/', '.'))
+        else:
+            commands.append(command_file[:-3])
+    else: continue
+
 logger.info('[Command Handler]: Started command handler')
 logger.warning('[Command Handler]: Not verified commands can damage your data security!')
-if extensions['commands'] != []:
-    with alive_bar(spinner='classic', total=int(len(extensions['commands'])), title='Commands', enrich_print=False) as bar:
-        for command in extensions['commands']:
+if commands != []:
+    with alive_bar(spinner='classic', total=int(len(commands)), title='Commands', enrich_print=False) as bar:
+        for command in commands:
             logger.debug('[Command Handler]: Starting loading command: {}'.format(command))
             bar.text('Loading {}'.format(command))
             try:
-                bot.load_extension(command)
+                bot.load_extension(('commands.' + command))
                 loaded_commands.append(command)
                 time.sleep(0.05)
             except Exception as e:
-                logger.error('[Command Handler]: load extension raised an error with errorcode 20: {}'.format(e))
-            logger.debug('[Command Handler]: Finished loading command: {}'.format(command))
+                logger.error('[Command Handler]: load_extension raised an error with errorcode 20: {}'.format(e))
+            logger.debug('[Command Handler]: Finish loading command: {}'.format(command))
             bar()
 else:
-    logger.warning('[Command Handler]: registered command not found: errorcode 21')
+    logger.warning('[Command Handler]: registered extension not found: errorcode 21')
+
 
 if extensions['extensions'] != []:
     with alive_bar(spinner='classic', total=int(len(extensions['extensions'])), title='Extensions', enrich_print=False) as bar:
@@ -73,7 +84,6 @@ if extensions['extensions'] != []:
             bar()
 else:
     logger.warning('[Extension Handler]: registered extension not found: errorcode 21')
-
 
 @bot.command()
 async def list_commands(ctx):
@@ -104,6 +114,7 @@ async def reload_extension(ctx, extension: str):
     if extension.startswith('extension.') or extension.startswith('commands.'):
         bot.reload_extension(extension)
         time.sleep(0.05)
+        return
     extension_data = extension_loader.get_extension_meta(extension)
     bot.reload_extension(extension_data[5])
 
@@ -113,6 +124,7 @@ async def unload_extension(ctx, extension: str):
         bot.unload_extension(extension)
         loaded_extensions.append(extension)
         time.sleep(0.05)
+        return
     extension_data = extension_loader.get_extension_meta(extension)
     bot.unload_extension(extension_data[5])
     loaded_extensions.remove(extension)
